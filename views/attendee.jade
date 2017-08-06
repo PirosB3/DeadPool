@@ -1,10 +1,88 @@
 doctype html
-html(lang="en")
+html(lang='en')
   head
-    title PyBay Workshop: Python libraries for Machine Learning and Deep Learning
+    meta(charset='utf-8')
+    meta(http-equiv='x-ua-compatible', content='ie=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    title TrustPool
+    // bootstrap core css
+    link(href='/css/bootstrap.min.css', rel='stylesheet')
+    // custom css
+    link(href='/css/landing-page.css', rel='stylesheet')
+    // custom fonts
+    link(href='/font-awesome/css/font-awesome.min.css', rel='stylesheet', type='text/css')
+    link(href='https://fonts.googleapis.com/css?family=lato:300,400,700,300italic,400italic,700italic', rel='stylesheet', type='text/css')
+    // html5 shim and respond.js ie8 support of html5 elements and media queries
+    // warning: respond.js doesn't work if you view the page via file://
+    //if lt ie 9
+      script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+      script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
   body
-    h1 PyBay Workshop: Python libraries for Machine Learning and Deep Learning
-
-    #container.attend
-        p Deposit $5 of Bitcoin to this address
-        img(src="https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=#{address}")
+    // navigation
+    nav.navbar.navbar-default.navbar-fixed-top.topnav(role='navigation')
+      .container.topnav
+        // brand and toggle get grouped for better mobile display
+        .navbar-header
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+            span.sr-only toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand.topnav(href='#') start bootstrap
+        // collect the nav links, forms, and other content for toggling
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          ul.nav.navbar-nav.navbar-right
+            li
+              a(href='#about') about
+            li
+              a(href='#services') services
+            li
+              a(href='#contact') contact
+        // /.navbar-collapse
+      // /.container
+    // header
+    a(name='about')
+    .intro-header
+      .container
+        .row
+          .col-lg-12
+            .intro-message
+              h2 pybay workshop: python libraries for machine learning and deep learning
+              h3 by francesco mosconi
+      // /.container
+    // /.intro-header
+    // page content
+    a(name='services')
+    .content-section-a
+      .container
+        .row
+          .col-lg-6.col-sm-6.col-offset-sm-3.col-lg-offset-3
+            h3 You are nearly confirmed
+            p Deposit $5 of Bitcoin to this address. The funds will be kept until you checkin at the event, and will be given back to you 24 hours after with potential interest!
+            .row
+              .col-lg-6.col-sm-6.col-offset-sm-3.col-lg-offset-3
+                img.img-thumbnail(src="https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=#{address}")
+    // footer
+    footer
+      .container
+        .row
+          .col-lg-12
+            ul.list-inline
+              li
+                a(href='#') home
+              li.footer-menu-divider ⋅
+              li
+                a(href='#about') about
+              li.footer-menu-divider ⋅
+              li
+                a(href='#services') services
+              li.footer-menu-divider ⋅
+              li
+                a(href='#contact') contact
+            p.copyright.text-muted.small copyright © your company 2014. all rights reserved
+    // jquery
+    script(src='/js/jquery.js')
+    // bootstrap core javascript
+    script(src='/js/bootstrap.min.js')

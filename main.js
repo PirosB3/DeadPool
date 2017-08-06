@@ -62,6 +62,7 @@ Attendee.sync().then(()=> {
     var app = express();
     app.set('view engine', 'jade');
     app.use(bodyParser.urlencoded({ extended: true })); 
+    app.use(express.static('static'))
 
     app.get('/sf-python/event-11-08-2017', function (req, res) {
         res.render('index');

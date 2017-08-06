@@ -1,30 +1,107 @@
 doctype html
-html(lang="en")
+html(lang='en')
   head
-    title PyBay Workshop: Python libraries for Machine Learning and Deep Learning
+    meta(charset='utf-8')
+    meta(http-equiv='x-ua-compatible', content='ie=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    title TrustPool
+    // bootstrap core css
+    link(href='/css/bootstrap.min.css', rel='stylesheet')
+    // custom css
+    link(href='/css/landing-page.css', rel='stylesheet')
+    // custom fonts
+    link(href='/font-awesome/css/font-awesome.min.css', rel='stylesheet', type='text/css')
+    link(href='https://fonts.googleapis.com/css?family=lato:300,400,700,300italic,400italic,700italic', rel='stylesheet', type='text/css')
+    // html5 shim and respond.js ie8 support of html5 elements and media queries
+    // warning: respond.js doesn't work if you view the page via file://
+    //if lt ie 9
+      script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+      script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
   body
-    h1 PyBay Workshop: Python libraries for Machine Learning and Deep Learning
-    #container.col
-        p Get your feet wet with Machine Learning and Deep Learning in Python using Pandas, Scikit-Learn, Keras and Tensorflow.
+    // navigation
+    nav.navbar.navbar-default.navbar-fixed-top.topnav(role='navigation')
+      .container.topnav
+        // brand and toggle get grouped for better mobile display
+        .navbar-header
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+            span.sr-only toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand.topnav(href='#') start bootstrap
+        // collect the nav links, forms, and other content for toggling
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          ul.nav.navbar-nav.navbar-right
+            li
+              a(href='#about') about
+            li
+              a(href='#services') services
+            li
+              a(href='#contact') contact
+        // /.navbar-collapse
+      // /.container
+    // header
+    a(name='about')
+    .intro-header
+      .container
+        .row
+          .col-lg-12
+            .intro-message
+              h2 pybay workshop: python libraries for machine learning and deep learning
+              h3 by francesco mosconi
+      // /.container
+    // /.intro-header
+    // page content
+    a(name='services')
+    .content-section-a
+      .container
+        .row
+          .col-lg-5.col-sm-6
+            hr.section-heading-spacer
+            .clearfix
+            p get your feet wet with machine learning and deep learning in python using pandas, scikit-learn, keras and tensorflow.
 
-        h2 Speaker: Francesco Mosconi
+            h3 abstract
+            get your feet wet with machine learning and deep learning in python using pandas, scikit-learn, keras and tensorflow. in this workshop we introduce three fundamental python libraries: pandas for data manipulation, scikit-learn for general machine learning and keras (with tensorflow backend) for deep learning. you will learn how to load and manipulate data from files, how to define and train a classifier model and how to use deep neural networks to improve your model performance. if you are new to machine learning this workshop is the perfect introduction.
 
-        h3 Abstract 
-        Get your feet wet with Machine Learning and Deep Learning in Python using Pandas, Scikit-Learn, Keras and Tensorflow. In this workshop we introduce three fundamental Python libraries: Pandas for data manipulation, Scikit-Learn for general Machine Learning and Keras (with Tensorflow backend) for Deep Learning. You will learn how to load and manipulate data from files, how to define and train a classifier model and how to use deep neural networks to improve your model performance. If you are new to machine learning this workshop is the perfect introduction.
+            h3 who should attend?
+            software engineers, data scientist, product managers with coding experience
 
-        h3 Who should attend? 
-        Software engineers, Data scientist, Product managers with coding experience
+            h3 preparation
+            have a laptop with miniconda python or anaconda python installed.
+          .col-lg-5.col-lg-offset-2.col-sm-6
+            h3 participation deposit
+            sf python uses trustpool to guarantee maximum attendance by giving a monetary commitment that will be refunded, together with potential interest, to you once the event is over.
 
-        h3 Preparation 
-        Have a laptop with miniconda python or anaconda python installed.
-
-    #container.attend
-        p Deposit for attending this workshop: $5
-        form(method='POST' action='/sf-python/event-11-08-2017/register')
-          div.form-group
-            label(for='email') Email:
-            input#email.form-control(type='email', placeholder='name@email.com' name='email')
-          div.form-group
-            label(for='returnAddress') Return Address:
-            input#favoriteBook.form-control(type='text', name='returnAddress')
-          button.btn.btn-primary(type='submit') Sign up
+            form(method='post' action='/sf-python/event-11-08-2017/register')
+              div.form-group
+                label(for='email') email:
+                input#email.form-control(required='true', type='email', placeholder='name@email.com', name='email')
+              div.form-group
+                label(for='returnaddress') return bitcoin address:
+                input#favoritebook.form-control(required='true', type='text', name='returnAddress', placeholder='let trustpool generate one for me')
+              button.btn.btn-primary(type='submit') sign up
+    // footer
+    footer
+      .container
+        .row
+          .col-lg-12
+            ul.list-inline
+              li
+                a(href='#') home
+              li.footer-menu-divider ⋅
+              li
+                a(href='#about') about
+              li.footer-menu-divider ⋅
+              li
+                a(href='#services') services
+              li.footer-menu-divider ⋅
+              li
+                a(href='#contact') contact
+            p.copyright.text-muted.small copyright © your company 2014. all rights reserved
+    // jquery
+    script(src='/js/jquery.js')
+    // bootstrap core javascript
+    script(src='/js/bootstrap.min.js')
