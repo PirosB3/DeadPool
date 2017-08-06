@@ -2,6 +2,14 @@ const bitcoin = require('bitcoinjs-lib');
 const express = require('express')
 const bodyParser = require('body-parser');
 const Attendee = require('./models');
+const bitcoinRpc = require('bitcoin');
+const AddressWatcher = require('./watcher').AddressWatcher;
+const EmailWatcher = require('./watcher').EmailWatcher;
+
+var client = new bitcoinRpc.Client({
+    host: '0.0.0.0', port: 18332, user: 'root', pass: 'root'
+});
+
 
 
 /**
@@ -25,15 +33,32 @@ function generateRandomPair(network) {
  */
 function registerAttendee(email, returnAddress) {
     var pair = generateRandomPair(bitcoin.networks.testnet);
-    return Attendee.create({
-        email: email,
-        address: pair.address,
-        returnAddress: returnAddress,
-        privateKey: pair.privateKey
+    return addToWatchList(pair.address)
+        .then(() => Attendee.create({
+            email: email,
+            address: pair.address,
+            returnAddress: returnAddress,
+            privateKey: pair.privateKey
+        }));
+}
+
+/**
+ * Adds a address to our wallet for monitoring
+ */
+function addToWatchList(address) {
+    return new Promise((resolve, reject) => {
+        client.importAddress(address, (err, diff) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(diff);
+            }
+        });
     });
 }
 
-Attendee.sync({force: true}).then(()=> {
+//Attendee.sync({force: true}).then(()=> {
+Attendee.sync().then(()=> {
     var app = express();
     app.set('view engine', 'jade');
     app.use(bodyParser.urlencoded({ extended: true })); 
@@ -70,6 +95,12 @@ Attendee.sync({force: true}).then(()=> {
             res.status(400).send('shit');
         });
     });
+
+    var addressWatcher = new AddressWatcher(client);
+    addressWatcher.run();
+
+    var emailWatcher = new EmailWatcher();
+    emailWatcher.run();
 
     app.listen(3000, function () {
       console.log('App listening on port 3000!')
