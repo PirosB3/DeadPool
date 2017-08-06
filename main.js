@@ -79,6 +79,17 @@ Attendee.sync().then(()=> {
           });
     })
 
+    app.get('/sf-python/event-11-08-2017/admin', function (req, res) {
+        Attendee.findAll().then(attendees=> {
+          var attendeesAttended = attendees.filter(a=> a.checkedIn)
+          var amountToSplit = attendees.length - attendeesAttended.length
+          var earnPerPerson = 5 + (5 * amountToSplit / attendeesAttended.length)
+          console.log(amountToSplit)
+          res.render("admin", {attendees: attendees, earnPerPerson: earnPerPerson})
+        });
+    });
+
+
     app.post('/sf-python/event-11-08-2017/register', function (req, res) {
         var email = req.body.email;
         var returnAddress = req.body.returnAddress;

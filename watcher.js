@@ -1,30 +1,32 @@
 const Attendee = require('./models');
-const Mailgun = require('Mailgun').Mailgun;
 const MG_API_KEY = require('./keys').MG_API_KEY;
-console.log(MG_API_KEY)
 
-var mg = new Mailgun(MG_API_KEY);
+var mailgun = require('mailgun-js')({apiKey: MG_API_KEY,
+                                     domain: "sandboxe6f9fe56bcb74c1da1c4051e5b6af190.mailgun.org"});
+
 
 function sendEmail(email) {
-    console.log(email);
-    mg.sendText("info@trustpool.com", [email], "woo!", "test",
-        function(err) {
-            if (err) {
-                console.log(err);
-            } else {
-                console.log('email sent to ' + email);
-                Attendee.update({
-                    sentEmail: true
-                }, {
-                    where: {
-                        email: {
-                            $eq: email
-                        }
-                    }
-                });
+    var data = {
+      from: "info@trustpool.com",
+      to: email,
+      subject: 'TrustPool received your payment!',
+      html: '<b>You are ready to go!</b> open <a href="#">this</a> link when you arrive at the venue'
+    };
+
+    mailgun.messages().send(data, function (error, body) {
+        console.log('email sent to ' + email);
+        Attendee.update({
+            sentEmail: true
+        }, {
+            where: {
+                email: {
+                    $eq: email
+                }
             }
         });
+    });
 }
+
 
 class EmailWatcher{
     run() {

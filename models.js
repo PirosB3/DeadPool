@@ -34,6 +34,11 @@ module.exports = sequelize.define('attendee', {
         allowNull: false,
         defaultValue: false
     },
+    checkedIn: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+        defaultValue: false
+    },
     paid: {
         type: Sequelize.BOOLEAN,
         allowNull: false,

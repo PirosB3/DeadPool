@@ -1,0 +1,14 @@
+doctype html
+html(lang="en")
+  head
+    title PyBay Workshop: Python libraries for Machine Learning and Deep Learning
+  body
+    h1 PyBay Workshop: Python libraries for Machine Learning and Deep Learning
+
+    #container.attend
+        h3 Attendees
+        each attendee in attendees
+            if attendee.checkedIn
+                li #{attendee.email} checked in. Gets #{earnPerPerson}
+            else
+                li #{attendee.email} did not check it
