@@ -1,0 +1,19 @@
+{
+  "name": "deadpool",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bitcoinjs-lib": "^3.1.1",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "jade": "^1.11.0",
+    "sequelize": "^4.4.2",
+    "sqlite3": "^3.1.9"
+  }
+}

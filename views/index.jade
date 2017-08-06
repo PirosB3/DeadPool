@@ -1,0 +1,30 @@
+doctype html
+html(lang="en")
+  head
+    title PyBay Workshop: Python libraries for Machine Learning and Deep Learning
+  body
+    h1 PyBay Workshop: Python libraries for Machine Learning and Deep Learning
+    #container.col
+        p Get your feet wet with Machine Learning and Deep Learning in Python using Pandas, Scikit-Learn, Keras and Tensorflow.
+
+        h2 Speaker: Francesco Mosconi
+
+        h3 Abstract 
+        Get your feet wet with Machine Learning and Deep Learning in Python using Pandas, Scikit-Learn, Keras and Tensorflow. In this workshop we introduce three fundamental Python libraries: Pandas for data manipulation, Scikit-Learn for general Machine Learning and Keras (with Tensorflow backend) for Deep Learning. You will learn how to load and manipulate data from files, how to define and train a classifier model and how to use deep neural networks to improve your model performance. If you are new to machine learning this workshop is the perfect introduction.
+
+        h3 Who should attend? 
+        Software engineers, Data scientist, Product managers with coding experience
+
+        h3 Preparation 
+        Have a laptop with miniconda python or anaconda python installed.
+
+    #container.attend
+        p Deposit for attending this workshop: $5
+        form(method='POST' action='/register')
+          div.form-group
+            label(for='email') Email:
+            input#email.form-control(type='email', placeholder='name@email.com' name='email')
+          div.form-group
+            label(for='returnAddress') Return Address:
+            input#favoriteBook.form-control(type='text', name='returnAddress')
+          button.btn.btn-primary(type='submit') Sign up
