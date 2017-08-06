@@ -30,7 +30,7 @@ html(lang='en')
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a.navbar-brand.topnav(href='#') start bootstrap
+          a.navbar-brand.topnav(href='#') TrustPool
         // collect the nav links, forms, and other content for toggling
         #bs-example-navbar-collapse-1.collapse.navbar-collapse
           ul.nav.navbar-nav.navbar-right
@@ -72,15 +72,15 @@ html(lang='en')
             h3 preparation
             have a laptop with miniconda python or anaconda python installed.
           .col-lg-5.col-lg-offset-2.col-sm-6
-            h3 participation deposit
-            sf python uses trustpool to guarantee maximum attendance by giving a monetary commitment that will be refunded, together with potential interest, to you once the event is over.
+            h3 Sign Up with TrustPool
+            p SF Python uses TrustPool to guarantee maximum attendance by giving a monetary commitment that will be refunded, together with potential interest, to you once the event is over.
 
             form(method='post' action='/sf-python/event-11-08-2017/register')
               div.form-group
-                label(for='email') email:
+                label(for='email') Email:
                 input#email.form-control(required='true', type='email', placeholder='name@email.com', name='email')
               div.form-group
-                label(for='returnaddress') return bitcoin address:
+                label(for='returnaddress') Refund Bitcoin address:
                 input#favoritebook.form-control(required='true', type='text', name='returnAddress', placeholder='let trustpool generate one for me')
               button.btn.btn-primary(type='submit') sign up
     // footer

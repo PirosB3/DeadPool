@@ -49,6 +49,7 @@ html(lang='en')
                   th Checked in
                   th Amount deposited
                   th Expected refund
+                  th Manual Check-in
               tbody
                 each attendee in attendees
                   tr
@@ -70,9 +71,15 @@ html(lang='en')
                       td $0
 
                     if attendee.checkedIn
-                      td $#{earnPerPerson}
+                      td $#{earnPerPerson.toFixed(2)}
                     else
                       td $0
+
+                    if !attendee.checkedIn && attendee.paid
+                        td
+                         a(href='/sf-python/event-11-08-2017/attendee/#{attendee.id}/checkin', class='btn btn-success') Check in
+                    else
+                        td
 
         .row
             h3 Process Refunds

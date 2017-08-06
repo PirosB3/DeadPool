@@ -78,6 +78,18 @@ Attendee.sync().then(()=> {
           });
     });
 
+    app.get('/sf-python/event-11-08-2017/attendee/:id/checkin', function (req, res) {
+        Attendee.update({
+            checkedIn: true
+        }, {
+            where: {
+                id: req.params.id
+            }
+        }).then(attendee => {
+            return res.redirect('/sf-python/event-11-08-2017/admin')
+        });
+    });
+
     app.get('/sf-python/event-11-08-2017/attendee/:id', function (req, res) {
 
         Attendee
