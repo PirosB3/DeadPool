@@ -10,7 +10,7 @@ function sendEmail(email) {
       from: "info@trustpool.com",
       to: email,
       subject: 'TrustPool received your payment!',
-      html: '<b>You are ready to go!</b> open <a href="#">this</a> link when you arrive at the venue'
+      html: '<p><b> Thank you! We have received your deposit. You are now ready to go!</b><p><p>Open <a href="#">this link</a> to open your TrustPool app when you are at the event. Use it to check-in and track your refund balance in real time<p>'
     };
 
     mailgun.messages().send(data, function (error, body) {

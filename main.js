@@ -68,6 +68,16 @@ Attendee.sync().then(()=> {
         res.render('index');
     });
 
+    app.get('/sf-python/event-11-08-2017/attendee/:id/status', function (req, res) {
+        Attendee
+          .findById(req.params.id)
+          .then(attendee => {
+              res.send({
+                  paid: attendee.paid
+              });
+          });
+    });
+
     app.get('/sf-python/event-11-08-2017/attendee/:id', function (req, res) {
 
         Attendee
@@ -75,6 +85,7 @@ Attendee.sync().then(()=> {
           .then(attendee => {
               return res.render('attendee', {
                  address: attendee.address,
+                 attendeeId: attendee.id
               });
               
           });

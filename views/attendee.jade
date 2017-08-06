@@ -59,11 +59,19 @@ html(lang='en')
       .container
         .row
           .col-lg-6.col-sm-6.col-offset-sm-3.col-lg-offset-3
-            h3 You are nearly confirmed
-            p Deposit $5 of Bitcoin to this address. The funds will be kept until you checkin at the event, and will be given back to you 24 hours after with potential interest!
-            .row
-              .col-lg-6.col-sm-6.col-offset-sm-3.col-lg-offset-3
-                img.img-thumbnail(src="https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=#{address}")
+            div.unconfirmed
+              h3 You are nearly confirmed
+              p Deposit $5 of Bitcoin to this address. The funds will be kept until you checkin at the event, and will be given back to you 24 hours after with potential interest!
+              .row
+                .col-lg-6.col-sm-6.col-offset-sm-3.col-lg-offset-3
+                  img.img-thumbnail(src="https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=#{address}")
+                  code.text-center=address
+                  p You can also click on this address to open your wallet, or to purchase some Bitcoin
+
+            div.confirmed
+                h3 Thank you for your payment
+                p You are ready to go! Your deposit was confirmed and you should receive an email from us shortly
+                p You can close this tab now, see you at the event!
     // footer
     footer
       .container
@@ -86,3 +94,6 @@ html(lang='en')
     script(src='/js/jquery.js')
     // bootstrap core javascript
     script(src='/js/bootstrap.min.js')
+    script(type='text/javascript')
+        != 'ATTENDEE_ID = ' + attendeeId
+    script(src='/js/main.js')
