@@ -1,39 +1,8 @@
 const bitcoin = require('bitcoinjs-lib');
 const express = require('express')
 const bodyParser = require('body-parser');
-const Sequelize = require('sequelize');
-const sequelize = new Sequelize('database', 'username', 'password', {
-    host: 'localhost',
-    dialect: 'sqlite',
-    storage: '/tmp/database.db'
-});
-sequelize
-    .authenticate()
-    .then(()=> {
-        console.log("Connected to local DB")
-    });
+const Attendee = require('./models');
 
-
-const Attendee = sequelize.define('attendee', {
-    id: {
-        type: Sequelize.INTEGER,
-        autoIncrement: true,
-        primaryKey: true
-    },
-    address: {
-        type: Sequelize.STRING,
-        key: true
-    },
-    returnAddress: {
-        type: Sequelize.STRING,
-    },
-    privateKey: {
-        type: Sequelize.STRING,
-    },
-    email: {
-        type: Sequelize.STRING,
-    }
-});
 
 /**
  * Generate a pair of {
@@ -68,11 +37,12 @@ Attendee.sync({force: true}).then(()=> {
     var app = express();
     app.set('view engine', 'jade');
     app.use(bodyParser.urlencoded({ extended: true })); 
-    app.get('/', function (req, res) {
-        res.render('index', { title: 'Hey', message: 'Hello there!' })
+
+    app.get('/sf-python/event-11-08-2017', function (req, res) {
+        res.render('index');
     });
 
-    app.get('/attendee/:id', function (req, res) {
+    app.get('/sf-python/event-11-08-2017/attendee/:id', function (req, res) {
 
         Attendee
           .findById(req.params.id)
@@ -84,7 +54,7 @@ Attendee.sync({force: true}).then(()=> {
           });
     })
 
-    app.post('/register', function (req, res) {
+    app.post('/sf-python/event-11-08-2017/register', function (req, res) {
         var email = req.body.email;
         var returnAddress = req.body.returnAddress;
         console.log(req.body);
@@ -94,7 +64,7 @@ Attendee.sync({force: true}).then(()=> {
         }
 
         registerAttendee(email, returnAddress).then((attendee) => {
-            return res.redirect('/attendee/' + attendee.id);
+            return res.redirect('/sf-python/event-11-08-2017/attendee/' + attendee.id);
         }).catch(err => {
             console.log(err);
             res.status(400).send('shit');
